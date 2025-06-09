@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adytum - Santuário do Desenvolvedor</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header id="app-header">
+        <div class="container">
+            <a href="#" class="logo" data-nav="home-section">Adytum</a>
+            <nav class="main-nav" id="main-nav">
+                <ul>
+                    <li><a href="#" data-nav="home-section">Home</a></li>
+                    <li><a href="#" data-nav="challenges-section">Desafios Técnicos</a></li>
+                    <li><a href="#" data-nav="career-tips-section">Dicas de Carreira</a></li>
+                    <li><a href="#" data-nav="good-practices-section">Boas Práticas</a></li>
+                </ul>
+            </nav>
+            <div class="user-actions">
+                <div id="user-actions-not-logged-in">
+                    <a href="#" class="auth-link" data-nav="auth-section">Login / Cadastro</a>
+                    <a href="#" class="admin-link-header" data-nav="admin-section">Admin</a>
+                </div>
+                <div id="user-actions-logged-in-user" style="display: none;">
+                    <span id="logged-in-user-name" class="user-greeting"></span>
+                    <a href="#" data-nav="dashboard-section">Dashboard</a>
+                    <a href="#" data-nav="interview-section">Simulador de Entrevistas</a>
+                    <button id="logout-user-btn" class="btn btn-outline">Sair</button>
+                </div>
+                <div id="user-actions-logged-in-admin" style="display: none;">
+                    <span id="logged-in-admin-name" class="user-greeting"></span>
+                    <a href="#" data-nav="admin-section">Painel Administrativo</a>
+                    <button id="logout-admin-btn" class="btn btn-outline">Sair</button>
+                </div>
+            </div>
+            <button class="hamburger-menu" id="hamburger-menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section id="home-section" class="active-section">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Bem-vindo ao Adytum</h1>
+                    <p>Sua jornada para a maestria em desenvolvimento começa aqui. Explore desafios, simule entrevistas e aprimore suas habilidades.</p>
+                    <div class="cta-buttons">
+                        <button class="btn btn-primary" data-nav="challenges-section">Explorar Desafios</button>
+                        <button class="btn btn-secondary-outline" data-nav="auth-section" id="home-register-cta">Comece Agora</button>
+                    </div>
+                </div>
+                </div>
+            <div class="container section-padding">
+                <h2>Nossos Módulos</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <i class="fas fa-code fa-2x"></i>
+                        <h3>Desafios Técnicos</h3>
+                        <p>Resolva problemas de programação e prepare-se para entrevistas técnicas.</p>
+                        <button class="btn btn-primary-outline" data-nav="challenges-section">Acessar</button>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-comments fa-2x"></i>
+                        <h3>Simulador de Entrevistas</h3>
+                        <p>Pratique suas respostas para perguntas comportamentais e técnicas.</p>
+                        <button class="btn btn-primary-outline" data-nav="interview-section">Acessar</button>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-check-circle fa-2x"></i>
+                        <h3>Boas Práticas de Código</h3>
+                        <p>Aprenda a escrever código limpo, eficiente e manutenível.</p>
+                        <button class="btn btn-primary-outline" data-nav="good-practices-section">Acessar</button>
+                    </div>
+                    <div class="feature-card">
+                        <i class="fas fa-briefcase fa-2x"></i>
+                        <h3>Dicas de Carreira</h3>
+                        <p>Conselhos e artigos para impulsionar sua carreira em TI.</p>
+                        <button class="btn btn-primary-outline" data-nav="career-tips-section">Acessar</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="auth-section" style="display: none;">
+            <div class="container section-padding auth-container">
+                <div id="login-form-container">
+                    <h2>Login</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label for="login-email">Email/Usuário</label>
+                            <input type="text" id="login-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Senha</label>
+                            <input type="password" id="login-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Entrar</button>
+                        <p class="form-message" id="login-message"></p>
+                        <p>Não tem uma conta? <a href="#" id="show-register-link">Cadastre-se</a></p>
+                    </form>
+                </div>
+
+                <div id="register-form-container" style="display: none;">
+                    <h2>Cadastro</h2>
+                    <form id="register-form">
+                        <div class="form-group">
+                            <label for="register-name">Nome Completo</label>
+                            <input type="text" id="register-name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <input type="email" id="register-email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Senha</label>
+                            <input type="password" id="register-password" required minlength="6">
+                        </div>
+                        <div class="form-group">
+                            <label for="register-confirm-password">Confirmar Senha</label>
+                            <input type="password" id="register-confirm-password" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                        <p class="form-message" id="register-message"></p>
+                        <p>Já tem uma conta? <a href="#" id="show-login-link">Faça Login</a></p>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <section id="challenges-section" style="display: none;">
+            <div class="container section-padding">
+                <div id="challenges-list">
+                    <h2>Desafios Técnicos</h2>
+                    <div class="challenges-grid" id="challenges-grid-content">
+                        </div>
+                </div>
+
+                <div id="challenge-resolution-screen" style="display: none;">
+                    <button id="back-to-challenges-list" class="btn btn-secondary-outline mb-20"><i class="fas fa-arrow-left"></i> Voltar para a Lista</button>
+                    <h2 id="challenge-title-resolution">Título do Desafio</h2>
+                    <p><strong>Enunciado:</strong></p>
+                    <p id="challenge-statement"></p>
+                    <p><strong>Exemplos I/O:</strong></p>
+                    <pre id="challenge-examples" class="code-block-display"></pre>
+                    <p><strong>Sua Solução:</strong> <span id="challenge-timer" class="timer-display">00:00</span></p>
+                    <div id="code-editor" class="code-editor-instance"></div>
+                    <button id="submit-challenge-btn" class="btn btn-primary mt-20">Simular Submissão</button>
+                    <div id="submission-feedback" class="mt-20 feedback-box"></div>
+                     </div>
+            </div>
+        </section>
+
+        <section id="interview-section" style="display: none;">
+            <div class="container section-padding">
+                <h2>Simulador de Entrevistas Comportamentais</h2>
+                <div class="interview-module">
+                    <div class="card">
+                        <h3>Pergunta da Entrevista:</h3>
+                        <p id="interview-question" class="mb-20">Clique em "Próxima Pergunta" para começar.</p>
+                        <div class="form-group">
+                            <label for="interview-answer">Sua Resposta:</label>
+                            <textarea id="interview-answer" rows="8" placeholder="Digite sua resposta aqui..."></textarea>
+                        </div>
+                        <button id="next-question-btn" class="btn btn-primary mt-20">Próxima Pergunta</button>
+                        <div id="interview-feedback" class="mt-20 feedback-box" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="good-practices-section" style="display: none;">
+            <div class="container section-padding">
+                <h2>Boas Práticas de Código</h2>
+                <div class="good-practice-topic">
+                    <h3>Princípio da Responsabilidade Única (SRP)</h3>
+                    <p>Uma classe ou módulo deve ter apenas um motivo para mudar. Isso significa que deve ter apenas uma responsabilidade.</p>
+                    <h4>Exemplo Ruim:</h4>
+                    <pre><code class="language-javascript">// Classe que faz muitas coisas
+class UserProcessor {
+    processUserData(data) { /* processa */ }
+    saveUserToDatabase(user) { /* salva no DB */ }
+    sendWelcomeEmail(user) { /* envia email */ }
+}</code></pre>
+                    <h4>Exemplo Bom:</h4>
+                    <pre><code class="language-javascript">// Classes separadas
+class UserDataProcessor { process(data) { /* processa */ } }
+class UserRepository { save(user) { /* salva no DB */ } }
+class EmailService { sendWelcome(user) { /* envia email */ } }
+</code></pre>
+                </div>
+                <div class="good-practice-topic">
+                    <h3>Nomes Significativos</h3>
+                    <p>Use nomes de variáveis, funções e classes que revelem a intenção e o propósito.</p>
+                    <h4>Exemplo Ruim:</h4>
+                    <pre><code class="language-javascript">let d; // o que é d?
+function proc(arr) { /* ... */ }</code></pre>
+                    <h4>Exemplo Bom:</h4>
+                    <pre><code class="language-javascript">let daysSinceModification;
+function processUserList(userArray) { /* ... */ }</code></pre>
+                </div>
+                </div>
+        </section>
+
+        <section id="career-tips-section" style="display: none;">
+            <div class="container section-padding">
+                <div id="articles-list-container">
+                    <h2>Dicas e Artigos de Carreira em TI</h2>
+                    <div class="articles-grid" id="articles-grid-content">
+                        </div>
+                </div>
+                <div id="article-view-container" style="display: none;">
+                    <button id="back-to-articles-list" class="btn btn-secondary-outline mb-20"><i class="fas fa-arrow-left"></i> Voltar para a Lista</button>
+                    <h2 id="article-title-view"></h2>
+                    <img id="article-image-view" src="" alt="Imagem do Artigo" class="article-image-placeholder mb-20">
+                    <div id="article-content-view" class="article-content"></div>
+                    </div>
+            </div>
+        </section>
+
+        <section id="dashboard-section" style="display: none;">
+            <div class="container section-padding">
+                <h2>Dashboard de Progresso</h2>
+                <div class="dashboard-grid">
+                    <div class="dashboard-card">
+                        <h3>Desafios Concluídos</h3>
+                        <p class="metric-value" id="dashboard-challenges-completed">15</p>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="progress-challenges" style="width: 75%;">75%</div>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Desempenho Geral</h3>
+                        <p class="metric-value" id="dashboard-performance">Bom</p>
+                         <div class="progress-bar-container">
+                            <div class="progress-bar purple" id="progress-performance" style="width: 60%;">60%</div>
+                        </div>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Pontuação Total</h3>
+                        <p class="metric-value" id="dashboard-score">1250 pts</p>
+                    </div>
+                    <div class="dashboard-card">
+                        <h3>Próximos Passos</h3>
+                        <ul id="dashboard-next-steps">
+                            <li>Resolver desafio "Algoritmo de Dijkstra".</li>
+                            <li>Ler artigo sobre "Clean Architecture".</li>
+                        </ul>
+                    </div>
+                     </div>
+            </div>
+        </section>
+
+        <section id="admin-section" style="display: none;">
+            <div class="container section-padding">
+                <div id="admin-login-form-container" style="display: none;" class="auth-container">
+                    <h2>Login Administrativo</h2>
+                    <form id="admin-login-form">
+                        <div class="form-group">
+                            <label for="admin-username">Usuário</label>
+                            <input type="text" id="admin-username" required value="root">
+                        </div>
+                        <div class="form-group">
+                            <label for="admin-password">Senha</label>
+                            <input type="password" id="admin-password" required value="2025">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Entrar como Admin</button>
+                        <p class="form-message" id="admin-login-message"></p>
+                    </form>
+                </div>
+
+                <div id="admin-panel-container" style="display: none;">
+                    <h2>Painel Administrativo</h2>
+                    <p>Bem-vindo, Administrador!</p>
+                    <div class="admin-actions-grid">
+                        <div class="admin-action-card">
+                            <i class="fas fa-tasks fa-2x"></i>
+                            <h3>Gerenciar Desafios</h3>
+                            <p>Adicionar, editar ou remover desafios técnicos.</p>
+                            <button class="btn btn-primary-outline" onclick="alert('Funcionalidade em desenvolvimento.')">Acessar</button>
+                        </div>
+                        <div class="admin-action-card">
+                            <i class="fas fa-newspaper fa-2x"></i>
+                            <h3>Gerenciar Artigos</h3>
+                            <p>Publicar e editar artigos de carreira.</p>
+                            <button class="btn btn-primary-outline" onclick="alert('Funcionalidade em desenvolvimento.')">Acessar</button>
+                        </div>
+                        <div class="admin-action-card">
+                            <i class="fas fa-users fa-2x"></i>
+                            <h3>Gerenciar Usuários</h3>
+                            <p>Visualizar e gerenciar contas de usuários.</p>
+                            <button class="btn btn-primary-outline" onclick="alert('Funcionalidade em desenvolvimento.')">Acessar</button>
+                        </div>
+                        <div class="admin-action-card">
+                            <i class="fas fa-chart-line fa-2x"></i>
+                            <h3>Métricas da Plataforma</h3>
+                            <p>Visualizar estatísticas de uso e engajamento.</p>
+                            <button class="btn btn-primary-outline" onclick="alert('Funcionalidade em desenvolvimento.')">Acessar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Adytum. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.33.0/ace.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.33.0/theme-chrome.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.33.0/mode-javascript.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
